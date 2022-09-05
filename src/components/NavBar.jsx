@@ -26,7 +26,6 @@ function NavBar() {
                 <li>
                     <Link to='/cart'> <FiShoppingCart /> </Link>
                     
-                    <p className="cart-num">{/*cartNumber*/}0</p>
                 </li>
             </ul>
         </div>

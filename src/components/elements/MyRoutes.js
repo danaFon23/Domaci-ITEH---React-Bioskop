@@ -4,16 +4,18 @@ import Cart from '../Cart'
 import Movies from '../Movies'
 import Signup from '../Signup'
 
-const MyRoutes = ({movieItems,cartItems, handleAddMovie, handleRemoveMovie}) => {
+const MyRoutes = ({movieItems,cartItems, handleAddMovie, handleRemoveMovie, clearCart}) => {
   return (
     <div>
         <Routes>
-            <Route path='/' exact element = {<Movies movieItems={movieItems} handleAddMovie={handleAddMovie}/>} />
-            <Route path='/signup' exact element = {<Signup />} />
-            <Route path='/cart' exact element = {<Cart cartItems={cartItems} handleAddMovie={handleAddMovie} handleRemoveMovie={handleRemoveMovie}/>} />
+            <Route path='/' element = {<Movies movieItems={movieItems} handleAddMovie={handleAddMovie}/>} />
+            <Route path='/home' element = {<Movies movieItems={movieItems} handleAddMovie={handleAddMovie}/>} />
+            <Route path='/signup' element = {<Signup />} />
+            <Route path='/cart' element = {<Cart cartItems={cartItems} handleAddMovie={handleAddMovie} 
+                                                 handleRemoveMovie={handleRemoveMovie} clearCart={clearCart}/>} />
         </Routes>
     </div>
-  )
-}
+  );
+};
 
 export default MyRoutes

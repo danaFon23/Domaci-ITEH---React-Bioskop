@@ -1,12 +1,20 @@
 import React from 'react'
 
-const Cart = ({cartItems, handleAddMovie, handleRemoveMovie}) => {
+const Cart = ({cartItems, handleAddMovie, handleRemoveMovie, clearCart}) => {
 
     const totalPrice = cartItems.reduce( (price, item) => price + item.quantity * item.price, 0);   
   return (
     <div className="cart-items">
-      <div className="cart-items-header">Cart items</div>
-
+      <h2 className="cart-items-header">Cart items</h2>
+      <div className='clear-cart'> 
+        {cartItems.length >= 1 && (
+          <button className='clear-cart-button' onClick={clearCart}>
+            Clear cart
+          </button>
+        )}
+      </div>
+      
+      
       {cartItems.length === 0 ? (
         <div className="cart-items-empty">Sorry, no items added in a cart!</div>
       ) : (
@@ -22,7 +30,7 @@ const Cart = ({cartItems, handleAddMovie, handleRemoveMovie}) => {
             />
             <div className='cart-items-name'>{item.title}</div>
             <div className='cart-items-function'>
-                <button className='cart-items-add' onClick={() => handleAddMovie}>+</button>
+                <button className='cart-items-add' onClick={() => handleAddMovie(item)}>+</button>
                 <button className='cart-items-remove' onClick={() => handleRemoveMovie(item)}>-</button>
             </div>
             <div className='cart-items-price'> {item.quantity} * RSD{item.price}</div>

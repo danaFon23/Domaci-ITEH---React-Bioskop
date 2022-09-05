@@ -12,7 +12,7 @@ import MyRoutes from './components/elements/MyRoutes'
 const App = () => {
   const {movieItems}  = data;
   const [cartItems, setCartItems] = useState([]);
-  //const[cartNum, setCartNum] = useState(0);
+  
 
   const handleAddMovie = (movie) =>{
     const MovieExist = cartItems.find((item) => item.id === movie.id);
@@ -21,13 +21,13 @@ const App = () => {
         cartItems.map((item) =>
           item.id === movie.id
             ? { ...MovieExist, quantity: MovieExist.quantity + 1 }
-            : movie
+            : item
         )
       );
     }else{
-      setCartItems([...cartItems,{...movie, quantity : 1}])
+      setCartItems([...cartItems,{...movie, quantity : 1}]);
     }
-  }
+  };
   
   const handleRemoveMovie = (movie) =>  {
     const MovieExist = cartItems.find((item) => item.id === movie.id);
@@ -36,18 +36,23 @@ const App = () => {
     }else{
       setCartItems(
         cartItems.map((item) => item.id === movie.id ?
-        {...MovieExist,quantity: MovieExist.quantity - 1} : movie)
+        {...MovieExist,quantity: MovieExist.quantity - 1} : item)
       )
     }
   }
   
+  const clearCart = () => {
+    setCartItems([]);
+  }
 
   return (
     <div>
       <BrowserRouter> 
         <NavBar></NavBar>
         <MyRoutes movieItems={movieItems} cartItems={cartItems} 
-                  handleAddMovie={handleAddMovie} handleRemoveMovie={handleRemoveMovie}/>
+                  handleAddMovie={handleAddMovie} 
+                  handleRemoveMovie={handleRemoveMovie}
+                  clearCart={clearCart}/>
           
       </BrowserRouter>
     </div>
