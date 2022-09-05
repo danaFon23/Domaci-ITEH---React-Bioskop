@@ -20,7 +20,7 @@ const Movies = ({ movieItems, handleAddMovie }) => {
           <div>
             <h3 className="movie-genre">Genre:{movieItem.genre}</h3>
           </div>
-          <div className="movie-price">RSD {movieItem.price}</div>
+          <div className="movie-price"> {movieItem.price} RSD</div>
           <div>
             <button
               className="movie-add-button"

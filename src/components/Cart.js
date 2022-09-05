@@ -33,13 +33,13 @@ const Cart = ({cartItems, handleAddMovie, handleRemoveMovie, clearCart}) => {
                 <button className='cart-items-add' onClick={() => handleAddMovie(item)}>+</button>
                 <button className='cart-items-remove' onClick={() => handleRemoveMovie(item)}>-</button>
             </div>
-            <div className='cart-items-price'> {item.quantity} * RSD{item.price}</div>
+            <div className='cart-items-price'> {item.quantity} * {item.price} RSD</div>
           </div>
         ))}
       </div>
       <div className='cart-items-total-price-name'> 
         Total price:
-        <div className='cart-items-total-price'>RSD{totalPrice}</div>
+        <div className='cart-items-total-price'>{totalPrice} RSD</div>
       </div>
     </div>
   );
